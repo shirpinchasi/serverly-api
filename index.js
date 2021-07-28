@@ -13,7 +13,7 @@ const port = config.port;
 
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
+    res.setHeader("Access-Control-Request-Headers");
     res.end('Hello World');
   });
   
@@ -24,6 +24,7 @@ const server = http.createServer((req, res) => {
 
 app.use(routes)
 
+connect();
 
 function connect() {
     mongoose.connect(config.dbUrl, {
