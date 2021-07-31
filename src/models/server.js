@@ -1,25 +1,29 @@
 const mongoose = require("mongoose");
 
 
-const Servers = new mongoose.model("server" , {
-    ipAddess : {
+
+var Servers = new mongoose.Schema({
+    serverIp : {
         type : String,
-        required : true,
+        required : "This field is required",
     },
-    Name : {
+    serverName : {
         type : String,
-        required: true
+        required : "This field is required",
     },
     serverType : {
         type : String,
-        required: true,
+        required : "This field is required",
     },
     price:{
-        type: Number
+        type: Number,
+        required : true
+        
     },
     isRunning : {
         type : Boolean,
+        required : true
     }
 });
 
-module.exports = Servers;
+module.exports =  mongoose.model("Server", Servers)
