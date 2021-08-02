@@ -58,16 +58,14 @@ app.delete('/deleteServer/:id', (req, res) => {
         throw err;
     }
     let dbo = db.db("serverly")
-    console.log(req);
+
     console.log(req.body);
     console.log(req.body.serverName);
-    dbo.collection('servers').findOneAndUpdate({_id: mongodb.ObjectID(req.params.id)}, {$set: {serverName: req.body.serverName}}, (err, result) => {
+    dbo.collection('servers').findOneAndUpdate({_id: mongodb.ObjectID(req.params.id)},{$set: {serverIp: req.body.serverIp}} , (err, result) => {
       if (err) 
       {
         console.log(err)
       }
-    console.log(req.body)
-    console.log(result); 
     })
     })
   })
